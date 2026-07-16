@@ -346,7 +346,7 @@ with st.sidebar:
         "testing begins."
     )
     st.markdown("---")
-    st.markdown("Built as a learning/portfolio project in cheminformatics + ML.")
+    st.markdown("Built as a learning project at IIT (BHU) Varanasi under the AI in Drug Discovery Internship Program.")
 
 # ============================================================
 # HEADER
