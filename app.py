@@ -379,7 +379,7 @@ with tab1:
 
                 with colA:
                     img = Draw.MolToImage(result['mol'], size=(350, 350))
-                    st.image(img, caption="Molecular structure", use_container_width=True)
+                    st.image(img, caption="Molecular structure")
 
                 with colB:
                     badge_class = "badge-toxic" if result['prediction'] == "Hepatotoxic" else "badge-safe"
