@@ -233,13 +233,21 @@ def predict_batch(smiles_list):
 # ============================================================
 # PDF REPORT GENERATION
 # ============================================================
+def safe_text(text):
+    """Sanitize text to be safely encodable in fpdf's default Latin-1 fonts."""
+    if text is None:
+        return "-"
+    text = str(text)
+    return text.encode('latin-1', 'replace').decode('latin-1')
+
+
 def generate_pdf_report(df, title="Hepatotoxicity Batch Prediction Report"):
     pdf = FPDF()
     pdf.add_page()
 
     pdf.set_font("Helvetica", "B", 16)
     pdf.set_text_color(11, 85, 99)
-    pdf.cell(0, 12, title, ln=True)
+    pdf.cell(0, 12, safe_text(title), ln=True)
 
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(90, 90, 90)
@@ -279,10 +287,10 @@ def generate_pdf_report(df, title="Hepatotoxicity Batch Prediction Report"):
     pdf.set_font("Helvetica", "", 8)
     pdf.set_text_color(30, 30, 30)
     for _, row in df.iterrows():
-        smi = str(row['Input_SMILES'])[:38]
-        pred = str(row['Prediction']) if pd.notna(row['Prediction']) else "-"
+        smi = safe_text(row['Input_SMILES'])[:38]
+        pred = safe_text(row['Prediction']) if pd.notna(row['Prediction']) else "-"
         prob = f"{row['Probability_Hepatotoxic']:.3f}" if pd.notna(row['Probability_Hepatotoxic']) else "-"
-        status = str(row['Status'])[:28]
+        status = safe_text(row['Status'])[:28]
 
         if pred == "Hepatotoxic":
             pdf.set_text_color(179, 38, 30)
