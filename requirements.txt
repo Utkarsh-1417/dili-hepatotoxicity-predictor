@@ -5,3 +5,4 @@ scikit-learn==1.5.1
 rdkit>=2023.9.1
 joblib==1.4.2
 fpdf2==2.7.9
+pillow>=10.4.0
