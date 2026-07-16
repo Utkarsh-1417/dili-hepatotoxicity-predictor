@@ -315,14 +315,28 @@ with st.sidebar:
     st.markdown("### 🧪 About")
     st.markdown(
         "This app predicts **Drug-Induced Liver Injury (DILI)** risk "
-        "from a molecule's SMILES string using a trained SVM model."
+        "from a molecule's SMILES string using a trained machine learning model."
     )
     st.markdown("---")
-    st.markdown("**Model details**")
-    st.markdown("- Algorithm: SVM (RBF kernel)")
-    st.markdown("- Features: Morgan fingerprints + RDKit descriptors → PCA")
-    st.markdown("- External validation MCC: ~0.33")
-    st.markdown("- External validation ROC-AUC: ~0.74")
+    st.markdown("**What is DILI?**")
+    st.markdown(
+        "Drug-Induced Liver Injury (DILI) is liver damage caused by "
+        "medications, supplements, or chemical compounds. It is one of "
+        "the most common reasons drugs fail in clinical trials or get "
+        "withdrawn from the market after approval."
+    )
+    st.markdown(
+        "The liver is the body's main site of drug metabolism, which "
+        "makes it especially vulnerable — some compounds are converted "
+        "into reactive, toxic byproducts during this process. DILI can "
+        "range from mild, reversible enzyme elevations to severe liver "
+        "failure in rare cases."
+    )
+    st.markdown(
+        "Predicting DILI risk early, from a molecule's structure alone, "
+        "can help prioritize safer candidates before costly experimental "
+        "testing begins."
+    )
     st.markdown("---")
     st.markdown("Built as a learning/portfolio project in cheminformatics + ML.")
 
@@ -495,3 +509,19 @@ with tab2:
         (external validation MCC ≈ 0.33). Intended for research/educational purposes only.
         </div>
         """, unsafe_allow_html=True)
+
+
+# ============================================================
+# PERMANENT FOOTER — Laboratory Verification Disclaimer
+# ============================================================
+st.markdown("---")
+st.markdown("""
+<div class="disclaimer" style="margin-top: 1.5rem;">
+🧫 <b>Important — Laboratory Verification Required:</b> All predictions from this tool are
+computational estimates based on a machine learning model trained on historical data. They are
+<b>not a substitute for experimental toxicology testing</b>. Any compound flagged here — toxic or
+non-toxic — should be verified through appropriate in vitro or in vivo laboratory studies before
+any real-world safety, clinical, or regulatory decision is made. This tool is intended solely for
+early-stage research screening and educational purposes.
+</div>
+""", unsafe_allow_html=True)
